@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <div id="demo">
+    <transition-group name="staggered-fade" tag="ul" :css="false" @before-enter="beforeEnter" @enter="enter"
+      @leave="leave">
+      <li v-for="(item, index) in computedList" :key="item.msg" :data-index="index">
+        <div class="test">
+        {{ item.name }}
+      </div>
+      </li>
+    </transition-group>
+  </div>
+  
+  <script>
+    const Demo = {
+    data() {
+      return {
+        el: 'test',
+        query: '',
+        list: [
+          { "id": 1, name: "Louise", "surname": "Foxton", "state": 2, "age": 59, "home town": "Zhoushizhuang", "vaccine": "DLC Laboratories, Inc.", "time": "12/26/2020" },
+          { "id": 2, name: "Germayne", "surname": "Whorf", "state": 2, "age": 6, "home town": "Návsí u Jablunkova", "vaccine": "Conopco Inc. d/b/a Unilever", "time": "7/10/2021" },
+          { "id": 3, name: "Issy", "surname": "Wheeldon", "state": 1, "age": 34, "home town": "Savanna-la-Mar", "vaccine": "Citron Pharma LLC", "time": "1/22/2021" },
+          { "id": 4, name: "Evered", "surname": "Geharke", "state": 2, "age": 25, "home town": "Cikalong", "vaccine": "La Prairie, Inc.", "time": "2/15/2021" },
+          { "id": 5, name: "Cecilia", "surname": "Gouldeby", "state": 2, "age": 94, "home town": "Bastan", "vaccine": "NCS HealthCare of KY, Inc dba Vangard Labs", "time": "11/27/2020" },
+          { "id": 6, name: "Bobby", "surname": "Griffoen", "state": 2, "age": 39, "home town": "Companhia de Baixo", "vaccine": "West-Ward Pharmaceutical Corp", "time": "11/10/2020" },
+          { "id": 7, name: "Bree", "surname": "Lawes", "state": 2, "age": 76, "home town": "Mersam", "vaccine": "Hillestad Pharmaceuticals USA", "time": "8/17/2020" },
+          { "id": 8, name: "Ardenia", "surname": "Feldmus", "state": 2, "age": 45, "home town": "Honghua’erji", "vaccine": "Conopco Inc. d/b/a Unilever", "time": "8/7/2021" },
+          { "id": 9, name: "Sibilla", "surname": "Durning", "state": 1, "age": 97, "home town": "Shingū", "vaccine": "ALK-Abello, Inc.", "time": "12/12/2020" },
+          { "id": 10, name: "Ara", "surname": "Seywood", "state": 1, "age": 73, "home town": "Magangué", "vaccine": "REMEDYREPACK INC.", "time": "4/20/2021" },
+        ]
+      }
+    },
+    computed: {
+      computedList() {
+        var vm = this
+        return this.list.filter((item) => {
+          return item.name.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+        })
+      }
+    },
+  
+  }
+  const Vue = window.vue;
+  Vue.createApp(Demo).mount('#demo')
+</script>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+
+
+</html>
